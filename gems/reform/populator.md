@@ -235,7 +235,7 @@ You can use `:populator` to write your own matching for IDs.
     collection :songs,
       populator: ->(fragment:, **) {
         # find out if incoming song is already added.
-        item = songs.find { |song| song.id == fragment["id"].to_i }
+        item = songs.find { |song| song.id.to_s == fragment["id"].to_s }
 
         item ? item : songs.append(Song.new)
       }
